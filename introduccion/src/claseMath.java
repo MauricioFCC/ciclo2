@@ -1,6 +1,6 @@
 // Class math
 import java.util.Scanner;
-
+import static java.lang.Math. *;
 public class claseMath {
     public static void main(String[] args) throws Exception{
         

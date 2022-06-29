@@ -11,13 +11,13 @@ public class calificacionEstudiante {
         System.out.println("Type the carticipation: ");
         participation = score.nextFloat();
 
-        System.out.println("Type the exam 1: ");
+        System.out.println("Type the test 1: ");
         exam1 = score.nextFloat();
 
-        System.out.println("Type the exam 2: ");
+        System.out.println("Type the test 2: ");
         exam2 = score.nextFloat();
 
-        System.out.println("Type the cexam 3: ");
+        System.out.println("Type the test 3: ");
         exam3 = score.nextFloat();
 
         total = (participation * 0.10f) + (exam1 * 0.25f) + (exam2 * 0.25f) + (exam3 * 0.40f);
