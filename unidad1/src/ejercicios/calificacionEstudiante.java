@@ -8,7 +8,7 @@ public class calificacionEstudiante {
         Scanner score = new Scanner(System.in);
         float participation, exam1, exam2, exam3, total;
 
-        System.out.println("Type the carticipation: ");
+        System.out.println("Type the participation: ");
         participation = score.nextFloat();
 
         System.out.println("Type the test 1: ");
