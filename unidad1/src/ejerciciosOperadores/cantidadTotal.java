@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 //Guillermo tiene N dolares, Luis tiene la mitad de lo que posee Guillermo, Juan tiene la mitad de lo que poseen Luis y Guillermo juntos. Hacer un programa que calcule e imprima la cantidad de dinero que tienen entre los tres.
 
 //Guillermo has N dollars, Luis has half of what Guillermo owns, Juan has half of what Luis and Guillermo together have. Make a program that calculates and prints the amount of money that the three of them have.

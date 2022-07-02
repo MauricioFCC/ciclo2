@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 import java.util.Scanner;
 public class areaTriagulo {
     public static void main(String[] args) throws Exception {

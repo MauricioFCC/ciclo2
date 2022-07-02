@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 //La calificacion final de un estudiante de informatica se calcula con base a calificaciones de cuatro aspectos de sus rendicminto academico: participacion, primer examen parcial, sugundo examen parcial y examen final. Sabiendo que las calificaciones anteriores entran a la calificacion final con ponderaciones del 10%, 25%, 25% y 40%, Hacer un programa que calcule e imprima la calificacion final obtenida por un estudiante.
 
 //The final grade of a computer science student is calculated based on grades of four aspects of their academic performance: participation, first partial exam, second partial exam and final exam. Knowing that the previous grades enter the final grade with weights of 10%, 25%, 25% and 40%, make a program that calculates and prints the final grade obtained by a student.

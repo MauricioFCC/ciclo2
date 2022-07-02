@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 //A student has the following marks in the exams: 5.25, 7.85, 3.4 Calculate what is the average of this quarter
 import javax.swing.JOptionPane;
 public class calculaMedia {

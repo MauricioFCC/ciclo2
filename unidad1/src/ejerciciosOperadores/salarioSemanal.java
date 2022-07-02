@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 //Make a program that calculates and prints an employee's weekly salary from their weekly hours worked and their hourly wage.
 import java.util.Scanner;
 public class salarioSemanal {

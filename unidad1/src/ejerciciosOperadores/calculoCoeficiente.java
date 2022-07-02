@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 
 import java.util.Scanner;
 

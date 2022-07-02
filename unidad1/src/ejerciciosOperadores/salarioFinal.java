@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 // Un usuario de un banco tiene un sueldo de 1000 $, ha hecho los siguientes gastos: 234$, 34.45$, 12,99$. Calcula cuál es su saldo final.
 import java.util.Scanner;
 

@@ -1,3 +1,4 @@
+package ejerciciosOperadores;
 //Build a program that, given a total number of hours, returns the number of equivalent weeks, days, and hours. For example, given a total of 1000 hours, it should show 5 weeks, 6 days and 16 hours.
 
 // costruir un programa que, dado un numero total de horas, devuelve el numero de semanas, dias y horas equivalentes. pro ejemplo, dada un total de 1000 horas debe mostrar 5 semanas, 6 dias y 16 horas.
