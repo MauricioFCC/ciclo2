@@ -12,6 +12,9 @@ public class mayorOigual {
         if (numberA > numberB){
             JOptionPane.showMessageDialog(null, "The number "+ numberA +" is greater");
         }
+        else if (numberA == numberB){
+            JOptionPane.showMessageDialog(null, "both number "+ numberA + " and " + numberB +" are the same");
+        }
         else{
             JOptionPane.showMessageDialog(null, "The number "+ numberB +" is greater");
         }
