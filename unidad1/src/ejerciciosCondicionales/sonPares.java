@@ -11,10 +11,13 @@ public class sonPares {
         number2 = Integer.parseInt(JOptionPane.showInputDialog("Type and ather number: "));
 
         if((number1 % 2 == 0) && (number2 % 2 == 0)){
-            JOptionPane.showMessageDialog(null, "The numbers " + number1 " " + number2 "are pair!..");
+            JOptionPane.showMessageDialog(null, "The numbers " + number1 + " " + number2 + " are pair!..");
+        }
+        else if((number1 % 2 != 0) && (number2 % 2 != 0)){
+            JOptionPane.showMessageDialog(null, "The numbers " + number1 +" " + number2 +" are odd!..");
         }
         else{
-            JOptionPane.showMessageDialog(null, "The numbers " + number1 " " + number2 "are odd!..");
+            JOptionPane.showMessageDialog(null, "The number is pair and other is odd!..");
         }
     } 
 }
