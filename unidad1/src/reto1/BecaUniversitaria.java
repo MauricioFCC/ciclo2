@@ -1,40 +1,56 @@
 
-//Atributos
-private Int pTiempo;
-private Double pMonto;
-private Double pInteres;
-
-//Constructores
-public BecaUniversitaria(Int pTiempo, Double pInteres, Double pMonto){
-     //this.pTiempo = Atributo
-    //pTiempo = Parametro
-    this.pTiempo = pTiempo;
-    this.pMonto = pMonto;
-    this.Interes = pInterest;
-}
-public BecaUniversitaria(){
-    this.pTiempo = 0;
-    this.pMonto = 0.0;
-    this.Interes = 0.0;
-}
-//Acciones/ Metodos
 public class BecaUniversitaria {
-    public String compararInversion(Int pTiempo, Double pInteres, Double pMonto){
-        return "La diferencia entre la proyección de interés compuesto e interés simple es: $";
+    //Atributos
+    private int pTiempo;
+    private double pMonto;
+    private double pInteres;
+
+    //Constructores
+    public BecaUniversitaria(int pTiempo, double pMonto, double pInteres){
+        //this.pTiempo = Atributo
+        //pTiempo = Parametro
+        this.pTiempo = pTiempo;
+        this.pMonto = pMonto;
+        this.pInteres = pInteres;
+    }
+    public BecaUniversitaria(){
+        this.pTiempo = 0;
+        this.pMonto = 0.00;
+        this.pInteres = 0.00;
+    }
+
+    //Acciones/ Metodos
+    public String compararInversion(int pTiempo, double pMonto, double pInteres){
+        this.pTiempo = pTiempo;
+        this.pMonto = pMonto;
+        this.pInteres = pInteres;
+        double diferencia = Math.round(calcularInteresCompuesto() - calcularInteresSimple());
+        return "La diferencia entre la proyección de interés compuesto e interés simple es: $" + diferencia;
     }
 
     public String compararInversion(){
-        Double compararInversion = interesCompuesto() - interesSimple();
-        return "No se obtuvo diferencia entre las proyecciones, revisar los parámetros de entrada.";
+        if((pInteres == 0) && (pTiempo == 0) && (pMonto == 0)){
+            return "No se obtuvo diferencia entre las proyecciones, revisar los parámetros de entrada.";
+        }
+        else{
+            double diferencia = calcularInteresCompuesto() - calcularInteresSimple();
+            return "La diferencia entre la proyección de interés compuesto e interés simple es: $" + diferencia;
+        }
+       // return "No se obtuvo diferencia entre las proyecciones, revisar los parámetros de entrada.";
     }
 
     public Double calcularInteresSimple(){
-        Double interesSimple = Math.round(pMonto * (interes /100) * pTiempo);
+        double interesSimple = Math.round(pMonto * (pInteres/100) * pTiempo);
         return interesSimple;
     }
 
-    public Double calcularInteresCompuesto(){
-        Double interesCompuesto = Math.round(pMonto * Math.pow((1 + (pInteres / 100)), pTiempo - 1));
-        return 0.0;
+    public double calcularInteresCompuesto(){
+        /*double interesCompuesto = Math.round(pMonto * Math.pow(1 + (pInteres / 100), pTiempo) - 1);
+        return interesCompuesto;
+        */
+        double resultado = Math.pow((1+ (pInteres/100)), pTiempo);
+        double interesCompuesto =  Math.round(pMonto * ( resultado - 1 )) ;
+        return  interesCompuesto;
+
     }
 }
