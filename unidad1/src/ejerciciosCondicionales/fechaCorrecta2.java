@@ -1,5 +1,7 @@
 //Pedir el dia, mes y año de una fecha e indicar si la fecha es correcta. teniendo en cuenta los 
 
+//Request the day, month and year of a date and indicate if the date is correct. taking into account the
+
 import  javax.swing.JOptionPane;
 public class fechaCorrecta2 {
     public static void main(String[] args)throws Exception{
