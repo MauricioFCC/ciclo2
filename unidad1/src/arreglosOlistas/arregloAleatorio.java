@@ -6,8 +6,8 @@ public class arregloAleatorio {
     String text = JOptionPane.showInputDialog("Input a array size: ");
     int numbers[] = new int [Integer.parseInt(text)];
     // Instanciar metodos
-    randomArray(numbers, 0, 9);
-    showArray(numbers);
+    randomArray(numbers, 0, 9); //Aleatorio
+    showArray(numbers); //Mostrar
     }
     //Metodo1 aleatorio
     public static void randomArray(int array[], int a, int b){
