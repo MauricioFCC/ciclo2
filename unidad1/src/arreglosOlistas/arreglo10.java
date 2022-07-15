@@ -6,19 +6,19 @@ public class arreglo10 {
 
         int numbers[] = new int[size];
         //invocar o instanciar
-        fillArray(numbers);
-        showArray(numbers);
+        fillArray(numbers); //Rellenar
+        showArray(numbers); //Mostrar
     }
-    // Metodo1
+    // Metodo 1, Rellenar
     public static void fillArray(int array[]){
-        for(int i = 0; i < array.length; i++){
+        for(int i = 0; i < array.length; i ++){
             String text = JOptionPane.showInputDialog("Type a number of array: " + (i + 1));
-            array[i] = Integer.parseInt(text);
+            array[i] = Integer.parseInt(text); // Solo agrega string y se convierte a integer
         } 
     }
-    // Metodo 2
+    // Metodo 2, mostrar
     public static void showArray(int array[]){
-        for(int i = 0; i < array.length; i++){
+        for(int i = 0; i < array.length; i ++){
             System.out.println("The index " + i + " It is found a number: " + array[i]);
         }
     }
