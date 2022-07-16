@@ -1,9 +1,7 @@
-import javax.print.FlavorException;
-
 public class Operacion{
     //Atributos
     float addition, subtract, multiplication, division;
-    //metodos
+    //metodos: get, set
     public float additions(float numberA, float numberB){
         addition = numberA + numberB;
         return addition;
