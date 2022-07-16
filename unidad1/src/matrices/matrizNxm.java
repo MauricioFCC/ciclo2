@@ -23,19 +23,18 @@ public class matrizNxm {
                 matrizTotal [i] [j] = matrizA [i] [j] + matrizB [i] [j];
             }
         } 
-         System.out.println("MatrizA");
+         System.out.println("MatrizA:");
          showMatriz(matrizA);
-         System.out.println("MatrizB");
+         System.out.println("MatrizB:");
          showMatriz(matrizB);
-         System.out.println("MatrizTotal");
+         System.out.println("MatrizTotal:");
          showMatriz(matrizTotal);
     }
     //Metodo2
     public static void showMatriz(int matriz [] []){
         for(int i = 0; i < matriz.length; i ++){
             for(int j = 0; j < matriz[0].length; j ++){ //variable[0] por convencion
-                matriz[i] [j] = (i * matriz.length) + (j + 1);
-                System.out.print(matriz[i][j] + " ");
+                System.out.print(matriz[i] [j] + " ");
             }
             System.out.println(" ");
         }
