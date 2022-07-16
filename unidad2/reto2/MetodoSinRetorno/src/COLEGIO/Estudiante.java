@@ -4,7 +4,7 @@ public class Estudiante extends Persona {
     private int estudentCode;
     private float finalNote;
 
-    //Contructor
+    //Constructor
     public Estudiante(String name, String lastName, int age, int estudentCode, float finalNote){
         super(name, lastName, age);
         //this.variable = Atributo

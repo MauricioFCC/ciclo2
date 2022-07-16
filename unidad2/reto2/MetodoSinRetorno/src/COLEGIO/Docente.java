@@ -1,10 +1,10 @@
-public class Docente {
+public class Docente extends Persona {
     //Atributos
     private int teacherCode;
     private float salary;
 
-    //Contructor
-    public teacher(String name, String lastName, int age, int teacherCode, float salary){
+    //Constructor
+    public Docente(String name, String lastName, int age, int teacherCode, float salary){
         super(name, lastName, age);
         //this.variable = Atributo
         //variable = Parametro
