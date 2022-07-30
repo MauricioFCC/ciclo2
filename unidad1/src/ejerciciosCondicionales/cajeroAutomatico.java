@@ -8,6 +8,6 @@ public class cajeroAutomatico {
 
     public static void main(String[] args){
 
-        double in, ;
+        double in;
     }
 }
