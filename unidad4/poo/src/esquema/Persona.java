@@ -1,7 +1,7 @@
 // Clase que representa a una person
 import java.util.Scanner;
 public class Persona {
-    //Atributos: deben ser ptivados y de primero
+    //Atributos: deben ser privados y de primero
     private String nombre;
     private String apellido;
     private int edad;
