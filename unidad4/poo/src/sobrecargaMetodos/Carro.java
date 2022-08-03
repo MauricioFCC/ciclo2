@@ -1,3 +1,4 @@
+
 public class Carro {
     //ATRIBUTOS
     private String color;
@@ -12,8 +13,26 @@ public class Carro {
         this.placa = placa;
     }
 
-    public carro(){
+    public Carro(String placa, String modelo){
         inicializar();
+        this.placa = placa;
+        this.modelo = modelo;
+    }
+
+    public Carro(){
+        inicializar();
+    }
+
+    @Override
+    public String toString(){
+        //convierte a String
+        String info = "-------------------------------CARRO-------------------------------\n";
+        info += "Color: " + color;
+        info += "\nVelocidad maxima: " + vel_maxima;
+        info += "\nModelo: " + modelo;
+        info += "\nPlaca: " + placa;
+        info += "\n-----------------------------------------------------------------------";
+        return info;
     }
 
     public void inicializar(){
@@ -59,7 +78,19 @@ public class Carro {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
-    
+    //ACCIONES
+    public void acelerar(){
+        System.out.println("Ecelerando...");
+    }
+    public void fenar(){
+        System.out.println("Frenando...");
+    }
+    public void girar_izquierda(){
+        System.out.println("Girando a la izquierda...");
+    }
+    public void girar_derecha(){
+        System.out.println("Girando a la derecha...");
+    }
     
     
     
