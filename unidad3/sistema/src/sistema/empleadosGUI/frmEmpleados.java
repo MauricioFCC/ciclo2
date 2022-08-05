@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package sistema.empleadosGUI;
-
+import sistema.empleadosDAL.conexion;
 /**
  *
  * @author Administrador
@@ -139,7 +139,8 @@ public class frmEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        conexion objetConexion = new conexion();
+        objetConexion.ejecutarSentenciaSQL("INSERT INTO EMPLOYEE(dataID, name, email) VALUES(null, 'Mauricio', 'Mauricioc@mauricio.com')");
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
