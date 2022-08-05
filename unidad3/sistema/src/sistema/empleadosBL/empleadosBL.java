@@ -3,7 +3,7 @@ package sistema.empleadosBL;
 
 public class empleadosBL {
     int dataID;
-    String mane;
+    String name;
     String email;
 
     public int getDataID() {
@@ -14,12 +14,12 @@ public class empleadosBL {
         this.dataID = dataID;
     }
 
-    public String getMane() {
-        return mane;
+    public String getName() {
+        return name;
     }
 
-    public void setMane(String mane) {
-        this.mane = mane;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -29,6 +29,5 @@ public class empleadosBL {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
+
 }

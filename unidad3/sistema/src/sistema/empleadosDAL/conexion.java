@@ -1,8 +1,10 @@
 
 package sistema.empleadosDAL;
+//Importamos libreria para la base de datos SQL
 import java.sql.*;
 
 public class conexion {
+    //Ruta de la base de datos
     String conexionBD = "jdbc:sqlite:C:/Users/Administrador/Documents/WorkSpace/ejercicios/java/ciclo2/unidad3/sistema/System.db";
     Connection conn = null;
     
@@ -17,7 +19,7 @@ public class conexion {
             System.out.println("Error en la conexion" + e);
         }
     }
-    //Ejecutar sntencia (Set)
+    //Ejecutar sentencia (Set)
     public int ejecutarSentenciaSQL(String strSentenciaSQL){
         try{
             PreparedStatement pstm = conn.prepareStatement(strSentenciaSQL);
@@ -27,6 +29,18 @@ public class conexion {
         catch(Exception e){
             System.out.println(e);
             return 0;
+        }
+    }
+    //Trae los datos de la base de datos
+    public ResultSet consultaRegistros(String strSentenciaSQL){
+        try{
+            PreparedStatement pstm = conn.prepareStatement(strSentenciaSQL);
+            ResultSet respuesta = pstm.executeQuery();
+            return respuesta;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return null;
         }
     }
 }
