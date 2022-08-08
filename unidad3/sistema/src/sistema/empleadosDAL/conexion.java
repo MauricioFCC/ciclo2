@@ -19,7 +19,7 @@ public class conexion {
             System.out.println("Error en la conexion" + e);
         }
     }
-    //Ejecutar sentencia (Set)
+    //Ejecutar sentencia (Set) para enviar datos
     public int ejecutarSentenciaSQL(String strSentenciaSQL){
         try{
             PreparedStatement pstm = conn.prepareStatement(strSentenciaSQL);

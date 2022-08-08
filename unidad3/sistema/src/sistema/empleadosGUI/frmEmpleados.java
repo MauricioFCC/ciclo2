@@ -1,29 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// importar Paketes
 package sistema.empleadosGUI;
 import sistema.empleadosDAL.conexion;
 import sistema.empleadosBL.empleadosBL;
+//libreria para SQL
 import java.sql.*;
-
+//librerias para la tabla
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
 
 public class frmEmpleados extends javax.swing.JFrame {
-
-    /**
-     * Creates new form frmEmpleados
-     */
-    public frmEmpleados() {
+    
+    //Importamos libreria para crear la tabla
+    DefaultTableModel model;
+    
+    //Metodo constructor
+    public frmEmpleados(){
         initComponents();
-    }
+        String[] titulos = {"ID", "Name", "Email"};
+        model = new DefaultTableModel(null, titulos);
+        
+        tblEmployees.setModel(model);
+        mostrarDatos();
+    } 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbEmployees = new javax.swing.JTable();
+        tblEmployees = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -32,12 +37,12 @@ public class frmEmpleados extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtDataID = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tbEmployees.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,7 +53,12 @@ public class frmEmpleados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tbEmployees);
+        tblEmployees.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEmployeesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblEmployees);
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +70,11 @@ public class frmEmpleados extends javax.swing.JFrame {
         btnEdit.setText("Edit");
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
 
@@ -97,7 +112,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(txtEmail)
                         .addComponent(txtName)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDataID, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,7 +121,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDataID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -134,12 +149,43 @@ public class frmEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        conexion objtConexion = new conexion();
-        empleadosBL objEmpleados = recuperarDatosGUI();
+        //insertar
+        conexion objtConexion = new conexion(); //Conexion a la base de datos
+        empleadosBL objEmpleados = recuperarDatosGUI(); //recuperar informacion de la base de datos
+        String strSentenciaInsertar = String.format("INSERT INTO EMPLOYEE(dataID, name, email)" // Insertar datos
+               + "VALUES ('%d', '%S', '%S')", objEmpleados.getDataID(), objEmpleados.getName(), objEmpleados.getEmail());
+        objtConexion.ejecutarSentenciaSQL(strSentenciaInsertar); //Ejecuta la sentencia insertar datos
+        mostrarDatos();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void tblEmployeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmployeesMouseClicked
+        // Seleccionar filas de tabla
+        if (evt.getClickCount() == 1){
+            JTable receptor = (JTable) evt.getSource();
+            txtDataID.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 0).toString());
+            txtName.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 1).toString());
+            txtEmail.setText(receptor.getModel().getValueAt(receptor.getSelectedRow(), 2).toString());
+        }
+    }//GEN-LAST:event_tblEmployeesMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        //borrar
+        conexion objtConexion = new conexion(); //Conexion a la base de datos
+        empleadosBL objEmpleados = recuperarDatosGUI(); //recuperar informacion de la base de datos
+        String strSentenciaBorrar = String.format("DELETE FROM EMPLOYEE WHERE DataID = '%d'", objEmpleados.getDataID()); //eliminar datos
+        objtConexion.ejecutarSentenciaSQL(strSentenciaBorrar); //Ejecuta la sentencia borrar
+        this.mostrarDatos();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    public void mostrarDatos(){ 
+        conexion objtConexion = new conexion(); //Conexion a la base de datos
+        /*
+        empleadosBL objEmpleados = recuperarDatosGUI(); //recuperar informacion de la base de datos
         String strSentenciaInsertar = String.format("INSERT INTO EMPLOYEE(dataID, name, email)" 
                + "VALUES ('%d', '%S', '%S')", objEmpleados.getDataID(), objEmpleados.getName(), objEmpleados.getEmail());
         objtConexion.ejecutarSentenciaSQL(strSentenciaInsertar);
+        //probar la base de datos
         //objetConexion.ejecutarSentenciaSQL("INSERT INTO EMPLOYEE(dataID, name, email) VALUES(null, 'Mauricio', 'Mauricio@mauricio.com')");
+        */
         try{
             ResultSet resultado = objtConexion.consultaRegistros("SELECT * FROM EMPLOYEE");
             while (resultado.next()){
@@ -147,24 +193,25 @@ public class frmEmpleados extends javax.swing.JFrame {
                 System.out.println(resultado.getString("name"));
                 System.out.println(resultado.getString("email"));
                 
+                Object[] usuario = {
+                    resultado.getString("dataID"), resultado.getString("name"), resultado.getString("email")};
+                    model.addRow(usuario);
+                }
             }
-        }
-        catch(Exception e){
+        catch(SQLException e){
             System.out.println(e);
         }
-    }//GEN-LAST:event_btnAddActionPerformed
+    }
     //Metodo de captura de datos del formulario con retorno a la base de datos
     public empleadosBL recuperarDatosGUI(){
         empleadosBL objEmpleados = new empleadosBL();
-        int dataID = (txtId.getText().isEmpty()?0: Integer.parseInt(txtId.getText()));
+        int dataID = (txtDataID.getText().isEmpty()?0: Integer.parseInt(txtDataID.getText()));
         objEmpleados.setDataID(dataID);
         objEmpleados.setName(txtName.getText());
         objEmpleados.setEmail(txtEmail.getText());
         return objEmpleados;
     }
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -190,10 +237,8 @@ public class frmEmpleados extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmEmpleados().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmEmpleados().setVisible(true);
         });
     }
 
@@ -206,9 +251,9 @@ public class frmEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbEmployees;
+    private javax.swing.JTable tblEmployees;
+    private javax.swing.JTextField txtDataID;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }
